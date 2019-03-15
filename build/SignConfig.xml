@@ -2,7 +2,13 @@
 <SignConfigXML>
   <job platform="" configuration="" dest="__INPATHROOT__" jobname="dep.controls" approvers="">
     <!-- Overwrite the input files to simplify downstream things like nuget and framework package generation. -->
-    <file src="__INPATHROOT__\Microsoft.UI.Xaml\Microsoft.UI.Xaml.dll" signType="AuthenticodeFormer" dest="__INPATHROOT__\Microsoft.UI.Xaml\Microsoft.UI.Xaml.dll" />
-    <file src="__INPATHROOT__\Microsoft.UI.Xaml\Microsoft.UI.Xaml.winmd" signType="AuthenticodeFormer" dest="__INPATHROOT__\Microsoft.UI.Xaml\Microsoft.UI.Xaml.winmd" />
+    <file src="__INPATHROOT__\x86\Release\Microsoft.UI.Xaml\Microsoft.UI.Xaml.dll" signType="AuthenticodeFormer" dest="__INPATHROOT__\x86\Release\Microsoft.UI.Xaml\Microsoft.UI.Xaml.dll" />
+    <file src="__INPATHROOT__\x86\Release\Microsoft.UI.Xaml\Microsoft.UI.Xaml.winmd" signType="AuthenticodeFormer" dest="__INPATHROOT__\x86\Release\Microsoft.UI.Xaml\Microsoft.UI.Xaml.winmd" />
+    <file src="__INPATHROOT__\x64\Release\Microsoft.UI.Xaml\Microsoft.UI.Xaml.dll" signType="AuthenticodeFormer" dest="__INPATHROOT__\x64\Release\Microsoft.UI.Xaml\Microsoft.UI.Xaml.dll" />
+    <file src="__INPATHROOT__\x64\Release\Microsoft.UI.Xaml\Microsoft.UI.Xaml.winmd" signType="AuthenticodeFormer" dest="__INPATHROOT__\x64\Release\Microsoft.UI.Xaml\Microsoft.UI.Xaml.winmd" />
+    <file src="__INPATHROOT__\arm\Release\Microsoft.UI.Xaml\Microsoft.UI.Xaml.dll" signType="AuthenticodeFormer" dest="__INPATHROOT__\arm\Release\Microsoft.UI.Xaml\Microsoft.UI.Xaml.dll" />
+    <file src="__INPATHROOT__\arm\Release\Microsoft.UI.Xaml\Microsoft.UI.Xaml.winmd" signType="AuthenticodeFormer" dest="__INPATHROOT__\arm\Release\Microsoft.UI.Xaml\Microsoft.UI.Xaml.winmd" />
+    <file src="__INPATHROOT__\arm64\Release\Microsoft.UI.Xaml\Microsoft.UI.Xaml.dll" signType="AuthenticodeFormer" dest="__INPATHROOT__\arm64\Release\Microsoft.UI.Xaml\Microsoft.UI.Xaml.dll" />
+    <file src="__INPATHROOT__\arm64\Release\Microsoft.UI.Xaml\Microsoft.UI.Xaml.winmd" signType="AuthenticodeFormer" dest="__INPATHROOT__\arm64\Release\Microsoft.UI.Xaml\Microsoft.UI.Xaml.winmd" />
   </job>
 </SignConfigXML>

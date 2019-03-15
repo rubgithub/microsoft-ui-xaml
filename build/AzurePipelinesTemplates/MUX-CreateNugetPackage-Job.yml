@@ -15,6 +15,14 @@ jobs:
   dependsOn:
     - ${{ parameters.dependsOn }}
 
+  # XES tasks need to be on PackageES machines.
+  ${{if parameters.signConfig }}:
+    pool:
+      name: Package ES Custom Demands Lab A
+      demands:
+        - ClientAlias -equals depcontrols2
+
+
   steps:
   - ${{if parameters.signConfig }}:
     - task: PkgESSetupBuild@10

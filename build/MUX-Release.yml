@@ -60,6 +60,7 @@ jobs:
     demands:
       - ClientAlias -equals depcontrols2
 
+  steps:
   - task: DownloadBuildArtifacts@0 
     inputs: 
       artifactName: drop

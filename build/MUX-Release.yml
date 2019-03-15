@@ -39,14 +39,9 @@ jobs:
   steps:
   - template: AzurePipelinesTemplates\MUX-BuildDevProject-Steps.yml
 
-  - task: CmdLine@1
-    displayName: 'Publish Symbol'
-    inputs:
-      filename: '$(Build.SourcesDirectory)\tools\PublishSymbols\PublishSymbols.cmd'      
-
   - template: AzurePipelinesTemplates\MUX-PublishDevProject-Steps.yml
 
-- job: SignBinaries
+- job: SignBinariesAndPublishSymbols
   dependsOn: Build
   pool:
     name: Package ES Custom Demands Lab A
@@ -58,7 +53,14 @@ jobs:
     inputs: 
       artifactName: drop
       downloadPath: '$(Build.SourcesDirectory)\BuildOutput'
-  
+
+  - template: MUX-PopulateBuildDateAndRevision-Steps.yml
+      
+  - task: CmdLine@1
+    displayName: 'Publish Symbol'
+    inputs:
+      filename: '$(Build.SourcesDirectory)\tools\PublishSymbols\PublishSymbols.cmd'      
+
   - task: PkgESCodeSign@10
     displayName: CodeSign
     inputs:
@@ -72,7 +74,7 @@ jobs:
 - template: AzurePipelinesTemplates\MUX-CreateNugetPackage-Job.yml
   parameters:
     jobName: CreateNugetPackage
-    dependsOn: SignBinaries
+    dependsOn: SignBinariesAndPublishSymbols
     # This is the magic GUID from the pipeline visual designer for this feed: https://dev.azure.com/ms/microsoft-ui-xaml/_packaging?_a=feed&feed=MUX-CI
     # publishVstsFeed: 'd62f8eac-f05c-4c25-bccb-21f98b95c95f'
     signConfig: '$(Build.SourcesDirectory)\build\NuGetSignConfig.xml'

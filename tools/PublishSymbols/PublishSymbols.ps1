@@ -14,9 +14,9 @@ $buildVersion = $versionMajor + "." + $versionMinor + "." + $env:BUILD_BUILDNUMB
 
 Write-Host "Build = $buildVersion"
 
-$buildId="$($env:BUILD_BUILDNUMBER)_$($env:BUILDCONFIGURATION)_$($env:BUILDPLATFORM)"
-$localDirectory=$env:BUILD_BINARIESDIRECTORY + "\" + $env:BUILDCONFIGURATION + "\" + $env:BUILDPLATFORM + "\Microsoft.UI.Xaml"
-$directory = "$env:XES_DFSDROP\$env:XES_RELATIVEOUTPUTROOT\Microsoft.UI.Xaml"
+$buildId="$($env:BUILD_BUILDNUMBER)"
+$localDirectory=$env:BUILD_BINARIESDIRECTORY
+$directory = "$env:XES_DFSDROP"
 
 Write-Host "Local path: '$localDirectory'"
 Write-Host "Build share: '$directory'"

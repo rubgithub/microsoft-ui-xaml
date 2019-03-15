@@ -54,7 +54,7 @@ jobs:
       artifactName: drop
       downloadPath: '$(Build.SourcesDirectory)\BuildOutput'
 
-  - template: MUX-PopulateBuildDateAndRevision-Steps.yml
+  - template: AzurePipelinesTemplates\MUX-PopulateBuildDateAndRevision-Steps.yml
       
   - task: CmdLine@1
     displayName: 'Publish Symbol'
@@ -68,7 +68,12 @@ jobs:
       inPathRoot: '$(Build.SourcesDirectory)\BuildOutput'
       outPathRoot: '$(Build.SourcesDirectory)\BuildOutput'
 
-  - template: AzurePipelinesTemplates\MUX-PublishDevProject-Steps.yml
+  # Re-publish signed artifacts to the drop.
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish artifact: drop'
+    inputs:
+      PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+      artifactName: 'drop'
 
 # Create Nuget Package
 - template: AzurePipelinesTemplates\MUX-CreateNugetPackage-Job.yml

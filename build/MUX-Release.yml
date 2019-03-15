@@ -10,9 +10,7 @@ jobs:
 
 - job: Build
   pool:
-    name: Package ES Custom Demands Lab A
-    demands:
-      - ClientAlias -equals depcontrols2
+    vmImage: 'VS2017-Win2016'
   timeoutInMinutes: 120
   strategy:
     maxParallel: 10

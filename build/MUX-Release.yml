@@ -37,13 +37,6 @@ jobs:
     value: $(Build.ArtifactStagingDirectory)
 
   steps:
-  - task: PkgESSetupBuild@10
-    displayName: 'XESSetupBuild'
-    inputs:
-      productName: dep.controls
-      branchVersion: true
-      nugetVer: true
-
   - template: AzurePipelinesTemplates\MUX-BuildDevProject-Steps.yml
 
   - task: CmdLine@1
